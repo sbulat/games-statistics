@@ -1,0 +1,14 @@
+<% if current_user %>
+  <div class="row">
+    <div class="col col-xs-12">
+      <h1>Moje ulubione gry</h1>
+      <% @favorites.each do |fav| %>
+        <div class="row">
+          <div class="col col-xs-12">
+            <%= fav.title.name %> - <%= link_to 'Dodaj partię', new_game_path(title_id: fav.title.id) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

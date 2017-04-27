@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GamesStatistics</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="menubar">
+      <ul class="">
+        <li class="menu-item menu-brand"><%= link_to 'Games Stats', root_path %></li>
+        <% if current_user %>
+          <li class="menu-item"><%= link_to 'Tytuły', titles_path %></li>
+          <li class="menu-item"><%= link_to 'Partie', games_path %></li>
+        <% end %>
+        <li class="menu-item menu-item-right"><%= link_to 'Login', new_user_session_path %></li>
+      </ul>
+    </div>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-info" role="alert"><%= flash[:notice] %></div>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

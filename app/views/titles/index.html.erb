@@ -1,0 +1,38 @@
+<div class="row container">
+  <div class="col col-xs-12">
+    <h1>Lista tytułów</h1>
+    <% @titles.each do |title| %>
+      <div class="row">
+        <div class="col col-xs-3">
+          <%= title.name %>
+        </div>
+        <div class="col col-xs-3">
+          Ulubiony: <%= overall_favs(title.id) %> graczy
+        </div>
+        <div class="col col-xs-6">
+          <% if !title.accepted? && current_user.admin? %>
+            <%= link_to 'Akceptuj', accept_title_path(title.id), method: :post %>
+          <% end %>
+          <% unless current_user.like?(title.id) %>
+              <%= link_to 'Dodaj do ulubionych', favorite_title_path(title.id), method: :post %>
+          <% end %>
+          <% if current_user %>
+            <%= link_to 'Dodaj partię', new_game_path(title_id: title.id) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if can? :create, Title %>
+      <div class="row">
+        <div class="col col-xs-12">
+          <p>
+            Brakuje tytułu? <%= link_to 'Dodaj go!', new_title_path %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

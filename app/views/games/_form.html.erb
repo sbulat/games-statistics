@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col col-xs-12">
+    <%= form_tag games_path(@game) do %>
+      <%= hidden_field_tag :title_id, value: @game.title_id %>
+      <div class="row">
+        <div class="col col-xs-3">
+          Gracz
+        </div>
+        <div class="col col-xs-3">
+          Punkty (Bramki)
+        </div>
+        <div class="col col-xs-3">
+          Rezultat
+        </div>
+        <div class="col col-xs-3">
+          Dodatkowe info
+        </div>
+      </div>
+
+      <%= render partial: 'player_row' %>
+
+      <div class="row">
+        <div class="col col-xs-12">
+          <%= submit_tag 'Zapisz', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
