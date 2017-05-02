@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col col-xs-12">
     <%= form_tag games_path(@game) do %>
-      <%= hidden_field_tag :title_id, value: @game.title_id %>
+      <%= date_select :game, :played_at, use_month_numbers: true, order: [:day, :month, :year] %>
+      <%= hidden_field_tag 'game[title_id]', @game.title_id %>
+      <%= hidden_field_tag 'game[user_id]', @game.user_id %>
       <div class="row">
         <div class="col col-xs-3">
           Gracz

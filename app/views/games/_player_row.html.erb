@@ -1,12 +1,12 @@
 <div class="row player-row">
   <div class="col col-xs-3">
     <div class="input-group">
-      <%= text_field_tag 'game[name][]', '', class: 'form-control name-field', placeholder: 'Nazwa' %>
+      <%= text_field_tag 'game[player][]', '', class: 'form-control player-field', placeholder: 'Gracz' %>
     </div>
   </div>
   <div class="col col-xs-3">
     <div class="input-group">
-      <%= text_field_tag 'game[points][]', '', class: 'form-control', placeholder: 'Punkty (Bramki)' %>
+      <%= text_field_tag 'game[score][]', '', class: 'form-control', placeholder: 'Punkty (Bramki)' %>
     </div>
   </div>
   <div class="col col-xs-3">
@@ -16,7 +16,7 @@
   </div>
   <div class="col col-xs-3">
     <div class="input-group">
-      <%= text_field_tag 'game[add_info][]', '', class: 'form-control', placeholder: 'Dodatkowe info' %>
+      <%= text_field_tag 'game[additional_info][]', '', class: 'form-control', placeholder: 'Dodatkowe info' %>
     </div>
   </div>
 </div>

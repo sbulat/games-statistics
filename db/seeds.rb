@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-u = User.new(email: 'admin@admin.pl', role: 1)
-u.password = 'testtest'
-u.save!
+if User.where(email: 'admin@admin.pl').first.nil?
+  u = User.new(email: 'admin@admin.pl', role: 1)
+  u.password = 'testtest'
+  u.save!
+end
+
+%w[Alkochińczyk Alkokalambury Alko-Dixit Alkostatki].each_with_index do |title, i|
+  Title.create!(name: title, accepted: i != 3)
+end

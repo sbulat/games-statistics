@@ -9,6 +9,8 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
+    @game.match_player_to_data
+
     redirect_to(games_path, notice: 'Test') && return
     if @game.save
       redirect_to games_path, notice: 'Dodano partię'
@@ -27,7 +29,8 @@ class GamesController < ApplicationController
   def game_params
     params
       .require(:game)
-      .permit(:title_id, :score, :result, :additional_info)
-      .merge(user_id: current_user.id)
+      .permit(
+        :title_id, :user_id, :played_at, player: [], score: [], result: [], additional_info: []
+      )
   end
 end

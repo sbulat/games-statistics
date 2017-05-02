@@ -1,5 +1,4 @@
-Ruby version: 2.4.0p0
-Rails version: 5.0.2
+Ruby version: 2.4.0p0; Rails version: 5.0.2
 
 How to setup Ruby and Rails on Windows 10:
 https://gorails.com/setup/windows/10
