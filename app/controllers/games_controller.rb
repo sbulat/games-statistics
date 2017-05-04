@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   def index
-    @games = current_user.try(:games)
+    return unless current_user
+    @games = current_user.games.order(played_at: :desc)
   end
 
   def new
@@ -11,7 +12,6 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     @game.match_player_to_data
 
-    redirect_to(games_path, notice: 'Test') && return
     if @game.save
       redirect_to games_path, notice: 'Dodano partię'
     else

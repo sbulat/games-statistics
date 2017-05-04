@@ -8,10 +8,17 @@ class Game < ApplicationRecord
   serialize :result, JSON
   serialize :additional_info, JSON
 
+  validates :score, :result, has_at_least_one_value: true
   validate :played_at_is_valid_date
 
+  after_save :update_favs_counters
+
   def match_player_to_data
-    s = r = ai = {} # temp vars: s - score, r - result, ai - additional_info
+    # temp vars: s - score, r - result, ai - additional_info
+    s = {}
+    r = {}
+    ai = {}
+
     player.each_with_index do |p, i|
       next if p.empty?
       s[p] = score[i]
@@ -27,10 +34,13 @@ class Game < ApplicationRecord
   private
 
   def played_at_is_valid_date
-    if Time.zone.parse(played_at) > Time.current
-      errors.add(:played_at, 'data gry nie może być późniejsza od dzisiejszej')
-    end
-  # rescue
-  #   errors.add(:played_at, 'zły format daty')
+    return if played_at <= Time.current
+
+    errors.add(:played_at, 'data gry nie może być późniejsza od dzisiejszej')
+  end
+
+  def update_favs_counters
+    fav = user.favorites.where(title_id: title_id).first
+    fav.update_attributes(played_games: fav.played_games + 1)
   end
 end

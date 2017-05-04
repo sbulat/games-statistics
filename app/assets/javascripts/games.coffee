@@ -4,8 +4,7 @@
 
 $(document).on 'turbolinks:load', ->
   $(document).on 'input', '.player-row .player-field:last', ->
-    block = false
-    if $(@).val().length && !block
-      $.get '/games/player_row', (res) ->
-        block = true
-        $(res).insertAfter('.player-row:last')
+    if $(@).val().length
+      $.get '/games/player_row', (res) =>
+        if $(@).closest('.player-row')[0] == $('.player-row:last')[0]
+          $(res).insertAfter('.player-row:last')

@@ -6,12 +6,12 @@
   </div>
   <div class="col col-xs-3">
     <div class="input-group">
-      <%= text_field_tag 'game[score][]', '', class: 'form-control', placeholder: 'Punkty (Bramki)' %>
+      <%= number_field_tag 'game[score][]', '', class: 'form-control', placeholder: 'Punkty (Bramki)', min: 0 %>
     </div>
   </div>
   <div class="col col-xs-3">
     <div class="input-group">
-      <%= text_field_tag 'game[result][]', '', class: 'form-control', placeholder: 'Rezultat' %>
+      <%= select_tag 'game[result][]', results_select, class: 'form-control', include_blank: true %>
     </div>
   </div>
   <div class="col col-xs-3">

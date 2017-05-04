@@ -11,12 +11,17 @@
   <body>
     <div class="menubar">
       <ul class="">
-        <li class="menu-item menu-brand"><%= link_to 'Games Stats', root_path %></li>
+        <li class="menu-item menu-brand">
+          <%= link_to 'Games Stats', current_user ? root_path : new_user_session_path %>
+        </li>
         <% if current_user %>
           <li class="menu-item"><%= link_to 'Tytuły', titles_path %></li>
           <li class="menu-item"><%= link_to 'Partie', games_path %></li>
+          <li class="menu-item"><%= link_to 'Wyloguj się', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li class="menu-item"><%= link_to 'Zarejestruj się', new_user_registration_path %></li>
+          <li class="menu-item"><%= link_to 'Zaloguj się', new_user_session_path %></li>
         <% end %>
-        <li class="menu-item menu-item-right"><%= link_to 'Login', new_user_session_path %></li>
       </ul>
     </div>
 
@@ -24,6 +29,12 @@
       <div class="alert alert-info" role="alert"><%= flash[:notice] %></div>
     <% end %>
 
-    <%= yield %>
+    <div id="container">
+      <div class="row">
+        <div class="col col-xs-12">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

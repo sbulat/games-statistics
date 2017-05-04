@@ -1,19 +1,20 @@
 <div class="row container">
   <div class="col col-xs-12">
     <h1>Lista partii</h1>
-    <% @games.each do |game| %>
-      <div class="row">
-        <div class="col col-xs-3">
-          <%= game.title.name %>
-        </div>
-        <div class="col col-xs-3">
-          placeholder
-        </div>
-        <div class="col col-xs-6">
-          placeholder
-        </div>
+    <div class="row">
+      <div class="col col-xs-3">
+        Tytuł gry
       </div>
-    <% end %>
+      <div class="col col-xs-3">
+        Rozegrano dnia
+      </div>
+      <div class="col col-xs-6">
+        placeholder
+      </div>
+    </div>
+
+    <%= render @games %>
+
   </div>
 </div>
 
