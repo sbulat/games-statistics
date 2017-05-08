@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :titles, only: %i[index new create]
+  resources :titles
   post '/title/:id/accept', to: 'titles#accept', as: 'accept_title'
   post '/title/:id/favorite', to: 'titles#favorite', as: 'favorite_title'
 

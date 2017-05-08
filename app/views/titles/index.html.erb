@@ -4,24 +4,30 @@
     <% @titles.each do |title| %>
       <div class="row">
         <div class="col col-xs-3">
-          <%= title.name %>
+          <%= link_to title.name, title_path(title.id) %>
         </div>
         <div class="col col-xs-3">
           Ulubiony: <%= overall_favs(title.id) %> graczy
         </div>
         <div class="col col-xs-6">
-          <% if !title.accepted? && current_user.admin? %>
-            <%= link_to 'Akceptuj', accept_title_path(title.id), method: :post %>
-          <% end %>
-          <% unless current_user.like?(title.id) %>
-              <%= link_to 'Dodaj do ulubionych', favorite_title_path(title.id), method: :post %>
-          <% end %>
           <% if current_user %>
+            <% if current_user.admin? %>
+              <%= link_to 'Akceptuj', accept_title_path(title.id), method: :post unless title.accepted? %>
+              <%= link_to 'Edytuj', edit_title_path(title.id) %>
+            <% end %>
+
+            <%= link_to 'Dodaj do ulubionych', favorite_title_path(title.id), method: :post unless current_user.like?(title.id) %>
             <%= link_to 'Dodaj partię', new_game_path(title_id: title.id) %>
           <% end %>
         </div>
       </div>
     <% end %>
+
+    <div class="row">
+      <div class="col col-xs-12 digg_pagination">
+        <%= will_paginate @titles %>
+      </div>
+    </div>
 
     <% if can? :create, Title %>
       <div class="row">

@@ -1,6 +1,7 @@
 class TitlesController < ApplicationController
   def index
     @titles = current_user.try(:admin?) ? Title.all : Title.accepted
+    @titles = @titles.order(:name).paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -20,6 +21,41 @@ class TitlesController < ApplicationController
       flash[:notice] = 'Wystąpił błąd podczas zapisu'
       render 'new'
     end
+  end
+
+  def show
+    @title = Title.find(params[:id])
+  end
+
+  def edit
+    @title = Title.find(params[:id])
+    authorize! :update, @title
+  end
+
+  def update
+    @title = Title.find(params[:id])
+    authorize! :update, @title
+
+    if @title.update_attributes(title_params)
+      flash[:notice] = 'Zaktualizowano tytuł'
+      redirect_to titles_path
+    else
+      flash[:notice] = 'Wystąpił błąd podczas aktualizacji'
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @title = Title.find(params[:id])
+
+    flash[:notice] =
+      if @title.destroy
+        'Usunięto tytuł'
+      else
+        'Wystąpił błąd podczas usuwania tytułu'
+      end
+
+    redirect_to titles_path
   end
 
   def accept
@@ -50,6 +86,6 @@ class TitlesController < ApplicationController
 
   def title_params
     params[:title][:accepted] = current_user.admin?
-    params.require(:title).permit(:name, :accepted)
+    params.require(:title).permit(:name, :score_type, :accepted)
   end
 end
