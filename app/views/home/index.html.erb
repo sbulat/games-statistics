@@ -7,8 +7,8 @@
           <li>
             <%= game.title.name %>
              - <%= game.played_at.strftime('%d-%m-%Y') %>
-             - Punkty: <%= game.score['Szczepan'] %>
-             - <%= game.result['Szczepan'].to_s.upcase %>
+             - Punkty: <%= game.user_score %>
+             - <%= game.user_result %>
           </li>
         <% end %>
       </ul>

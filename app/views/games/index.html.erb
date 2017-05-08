@@ -8,12 +8,28 @@
       <div class="col col-xs-3">
         Rozegrano dnia
       </div>
-      <div class="col col-xs-6">
-        placeholder
+      <div class="col col-xs-2">
+        Punkty
+      </div>
+      <div class="col col-xs-2">
+        Rezultat
+      </div>
+      <div class="col col-xs-2">
+        Zarządzaj
       </div>
     </div>
 
-    <%= render @games %>
+    <div class="row main-row">
+      <div class="col col-xs-12">
+        <%= render @games %>
+      </div>
+    </div>
+
+    <div class="row main-row">
+      <div class="col col-xs-12 digg_pagination">
+        <%= will_paginate @games %>
+      </div>
+    </div>
 
   </div>
 </div>

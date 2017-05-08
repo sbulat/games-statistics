@@ -2,3 +2,9 @@ pl:
   will_paginate:
     previous_label: Poprzednia
     next_label: Następna
+  activerecord:
+    attributes:
+      title:
+        score_type:
+          goals: Bramki
+          points: Punkty

@@ -31,6 +31,14 @@ class Game < ApplicationRecord
     self.additional_info = ai
   end
 
+  def user_score
+    score[user.display_name] || score.values.first
+  end
+
+  def user_result
+    result[user.display_name] || result.values.first
+  end
+
   private
 
   def played_at_is_valid_date

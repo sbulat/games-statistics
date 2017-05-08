@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   def index
     return unless current_user
     @games = current_user.games.order(played_at: :desc)
+    @games = @games.paginate(page: params[:page], per_page: 20)
   end
 
   def new
@@ -17,6 +18,20 @@ class GamesController < ApplicationController
     else
       flash[:notice] = 'Wystąpił błąd podczas dodawania partii'
       render 'new'
+    end
+  end
+
+  def show
+    @game = Game.find(params[:id])
+  end
+
+  def destroy
+    game = Game.find(params[:id])
+
+    if game.destroy
+      redirect_to games_path, notice: 'Usunięto partię'
+    else
+      redirect_to games_path, notice: 'Wystąpił błąd podczas usuwania partii'
     end
   end
 
