@@ -9,4 +9,8 @@ class Title < ApplicationRecord
   validates :name, uniqueness: true
 
   scope :accepted, (-> { where(accepted: true) })
+
+  def user_played_games(user)
+    user.games.where(title_id: id).count
+  end
 end

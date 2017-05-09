@@ -25,6 +25,10 @@ class TitlesController < ApplicationController
 
   def show
     @title = Title.find(params[:id])
+    @games = current_user.games
+                         .where(title_id: @title.id)
+                         .order(:played_at)
+                         .paginate(page: params[:page], per_page: 10)
   end
 
   def edit

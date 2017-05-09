@@ -1,22 +1,22 @@
-<h1>Gra w <%= @game.title.name %> z dnia <%= @game.played_at.strftime('%d-%m-%Y') %></h1>
-
+<h1>Tytuł: <%= @game.title.name %></h1>
+<h1>Data: <%= @game.played_at.strftime('%d-%m-%Y') %></h1>
 <div class="row main-row">
-  <div class="col col-xs-3">Nazwa gracza</div>
-  <div class="col col-xs-3">
+  <div class="col col-3">Nazwa gracza</div>
+  <div class="col col-3">
     <%= I18n::t("activerecord.attributes.title.score_type.#{@game.title.score_type}") %>
   </div>
-  <div class="col col-xs-3">Rezultat</div>
-  <div class="col col-xs-3">Dodatkowe informacje</div>
+  <div class="col col-3">Rezultat</div>
+  <div class="col col-3">Dodatkowe informacje</div>
 </div>
 
 <div class="row main-row">
-  <div class="col col-xs-12">
+  <div class="col col-12">
     <% @game.score.keys.each do |player_name| %>
       <div class="row">
-        <div class="col col-xs-3"><%= player_name %></div>
-        <div class="col col-xs-3"><%= @game.score[player_name] %></div>
-        <div class="col col-xs-3"><%= @game.result[player_name] %></div>
-        <div class="col col-xs-3"><%= @game.additional_info[player_name] %></div>
+        <div class="col col-3"><%= player_name %></div>
+        <div class="col col-3"><%= @game.score[player_name] %></div>
+        <div class="col col-3"><%= @game.result[player_name] %></div>
+        <div class="col col-3"><%= @game.additional_info[player_name] %></div>
       </div>
     <% end %>
   </div>

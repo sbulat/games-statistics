@@ -1,32 +1,32 @@
 <div class="row container">
-  <div class="col col-xs-12">
+  <div class="col col-12">
     <h1>Lista partii</h1>
     <div class="row">
-      <div class="col col-xs-3">
+      <div class="col col-3">
         Tytuł gry
       </div>
-      <div class="col col-xs-3">
+      <div class="col col-3">
         Rozegrano dnia
       </div>
-      <div class="col col-xs-2">
+      <div class="col col-2">
         Punkty
       </div>
-      <div class="col col-xs-2">
+      <div class="col col-2">
         Rezultat
       </div>
-      <div class="col col-xs-2">
-        Zarządzaj
+      <div class="col col-2">
+        Akcje
       </div>
     </div>
 
     <div class="row main-row">
-      <div class="col col-xs-12">
+      <div class="col col-12">
         <%= render @games %>
       </div>
     </div>
 
     <div class="row main-row">
-      <div class="col col-xs-12 digg_pagination">
+      <div class="col col-12 digg_pagination">
         <%= will_paginate @games %>
       </div>
     </div>

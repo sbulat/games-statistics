@@ -1,11 +1,11 @@
 <div class="row">
-  <div class="col col-xs-3">
+  <div class="col col-3">
     <%= link_to title.name, title_path(title.id) %>
   </div>
-  <div class="col col-xs-3">
-    Ulubiony: <%= overall_favs(title.id) %> graczy
+  <div class="col col-5">
+    Ulubiony: <%= overall_favs(title.id) %> graczy | Rozegrano gier ogółem: <%= title.games.count %>
   </div>
-  <div class="col col-xs-6">
+  <div class="col col-4">
     <% if current_user %>
       <% if current_user.admin? %>
         <%= link_to 'Akceptuj', accept_title_path(title.id), method: :post unless title.accepted? %>

@@ -1,20 +1,20 @@
 <div class="row player-row">
-  <div class="col col-xs-3">
+  <div class="col col-3">
     <div class="input-group">
       <%= text_field_tag 'game[player][]', '', class: 'form-control player-field', placeholder: 'Gracz' %>
     </div>
   </div>
-  <div class="col col-xs-3">
+  <div class="col col-3">
     <div class="input-group">
       <%= number_field_tag 'game[score][]', '', class: 'form-control', placeholder: 'Punkty (Bramki)', min: 0 %>
     </div>
   </div>
-  <div class="col col-xs-3">
+  <div class="col col-3">
     <div class="input-group">
       <%= select_tag 'game[result][]', results_select, class: 'form-control', include_blank: true %>
     </div>
   </div>
-  <div class="col col-xs-3">
+  <div class="col col-3">
     <div class="input-group">
       <%= text_field_tag 'game[additional_info][]', '', class: 'form-control', placeholder: 'Dodatkowe info' %>
     </div>

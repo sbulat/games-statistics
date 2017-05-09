@@ -1,1 +1,18 @@
-<h1><%= @title.name %></h1>
+<h1>Moje wyniki w <%= @title.name %></h1>
+
+<ul>
+  <% @games.each do |game| %>
+    <li>
+      <%= link_to game.title.name, game_path(game.id) %>
+       - <%= game.played_at.strftime('%d-%m-%Y') %>
+       - Punkty: <%= game.user_score %>
+       - <%= game.user_result %>
+    </li>
+  <% end %>
+</ul>
+
+<div class="row">
+  <div class="col col-12">
+    <%= will_paginate @games %>
+  </div>
+</div>
