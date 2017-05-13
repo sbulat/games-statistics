@@ -53,7 +53,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added by team
-gem 'bootstrap'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'cancancan'
 gem 'devise'
 gem 'rails-i18n', '~> 5.0.0'

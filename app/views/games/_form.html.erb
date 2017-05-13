@@ -1,7 +1,7 @@
 <% @score_type = I18n::t("activerecord.attributes.title.score_type.#{@game.title.score_type}") %>
 
 <div class="row">
-  <div class="col col-12">
+  <div class="col col-sm-12">
     <%= render(partial: '/partials/errors', locals: { object: @game }) if @game.errors.any? %>
 
     <%= form_tag games_path(@game) do %>
@@ -9,37 +9,37 @@
       <%= hidden_field_tag 'game[user_id]', @game.user_id %>
 
       <div class="row">
-        <div class="col col-12 text-center">
+        <div class="col col-sm-12 text-center">
           <%= label_tag 'game[played_at]', 'Rozegrano dnia' %>
           <%= date_select :game, :played_at, order: [:day, :month, :year] %>
         </div>
       </div>
 
       <div class="row">
-        <div class="col col-12">
+        <div class="col col-sm-12">
           <div class="row">
-            <div class="col col-3">
+            <div class="col col-sm-3">
               Gracz
             </div>
-            <div class="col col-3">
+            <div class="col col-sm-3">
               <%= @score_type %>
             </div>
-            <div class="col col-3">
+            <div class="col col-sm-3">
               Rezultat
             </div>
-            <div class="col col-3">
+            <div class="col col-sm-3">
               Dodatkowe info
             </div>
           </div>
 
-          <div id="player-rows" class="col-12">
+          <div id="player-rows" class="col-sm-12">
             <%= render partial: 'player_row' %>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col col-12 text-center ">
+        <div class="col col-sm-12 text-center ">
           <%= submit_tag 'Zapisz', class: 'btn btn-primary' %>
         </div>
       </div>

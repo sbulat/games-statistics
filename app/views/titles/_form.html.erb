@@ -1,16 +1,16 @@
 <%= form_for @title do |f| %>
   <div class="row">
-    <div class="col col-6">
+    <div class="col col-sm-6">
       <%= f.label :name, 'Nazwa' %>
       <%= f.text_field :name, placeholder: 'Nazwa', style: 'width: 75%' %>
     </div>
-    <div class="col col-6">
+    <div class="col col-sm-6">
       <%= f.label :score_type, 'Typ wyniku' %>
       <%= f.select :score_type, score_type_select %>
     </div>
   </div>
   <div class="row">
-    <div class="col col-12 text-center">
+    <div class="col col-sm-12 text-center">
       <%= f.submit 'Zapisz', class: 'btn btn-primary' %>
     </div>
   </div>

@@ -1,0 +1,23 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Tytuł');
+    data.addColumn('number', 'Liczba gier');
+    data.addRows(<%= raw favorites_chart(@favorites) %>);
+
+    var options = {
+      'title': 'Rozgrywki w moje ulubione tytuły',
+      'height': 400
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('favorites-chart'));
+    chart.draw(data, options);
+  }
+</script>
+
+<div id="favorites-chart"></div>

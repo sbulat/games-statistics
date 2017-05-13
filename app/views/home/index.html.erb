@@ -1,26 +1,10 @@
 <% if current_user %>
   <div class="row">
-    <div class="col col-12">
-      <h1>5 ostatnich partii</h1>
-      <ul>
-        <% @games.each do |game| %>
-          <li>
-            <%= game.title.name %>
-             - <%= game.played_at.strftime('%d-%m-%Y') %>
-             - <%= "#{I18n::t("activerecord.attributes.title.score_type.#{game.title.score_type}")}: #{game.user_score}" %>
-             - <%= game.user_result %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col col-12">
+    <div class="col col-sm-12 col-lg-6 main-row">
       <h1>Moje ulubione gry</h1>
       <% @favorites.each do |fav| %>
         <div class="row">
-          <div class="col col-12">
+          <div class="col col-sm-12">
             <span>
               <%= fav.title.name %>
             </span>
@@ -33,6 +17,30 @@
           </div>
         </div>
       <% end %>
+    </div>
+
+    <div class="col col-sm-12 col-lg-6">
+      <div class="row">
+        <div class="col col-sm-12">
+          <h1>5 ostatnich partii</h1>
+          <ul>
+            <% @games.each do |game| %>
+              <li>
+                <%= game.title.name %>
+                 - <%= game.played_at.strftime('%d-%m-%Y') %>
+                 - <%= "#{I18n::t("activerecord.attributes.title.score_type.#{game.title.score_type}")}: #{game.user_score}" %>
+                 - <%= game.user_result %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-sm-12">
+          <%= render 'favorites_chart' %>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

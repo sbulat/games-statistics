@@ -1,19 +1,20 @@
 <div class="row">
-  <div class="col col-3">
+  <div class="col col-sm-3">
     <%= link_to title.name, title_path(title.id) %>
   </div>
-  <div class="col col-5">
+  <div class="col col-sm-5">
     Ulubiony: <%= overall_favs(title.id) %> graczy | Rozegrano gier ogółem: <%= title.games.count %>
   </div>
-  <div class="col col-4">
+  <div class="col col-sm-4">
     <% if current_user %>
       <% if current_user.admin? %>
-        <%= link_to 'Akceptuj', accept_title_path(title.id), method: :post unless title.accepted? %>
-        <%= link_to 'Edytuj', edit_title_path(title.id) %>
+        <%= link_to icon_span('ok'), accept_title_path(title.id), title: 'Akceptuj', method: :post unless title.accepted? %>
+        <%= link_to icon_span('pencil'), edit_title_path(title.id), title: 'Edytuj' %>
+        <%= link_to icon_span('remove'), edit_title_path(title.id), title: 'Usuń', confirm: 'Na pewno?', method: :delete %>
       <% end %>
 
-      <%= link_to 'Dodaj do ulubionych', favorite_title_path(title.id), method: :post unless current_user.like?(title.id) %>
-      <%= link_to 'Dodaj partię', new_game_path(title_id: title.id) %>
+      <%= link_to icon_span('thumbs-up'), favorite_title_path(title.id), title: 'Dodaj do ulubionych', method: :post unless current_user.like?(title.id) %>
+      <%= link_to icon_span('plus'), new_game_path(title_id: title.id), title: 'Dodaj partię' %>
     <% end %>
   </div>
 </div>
