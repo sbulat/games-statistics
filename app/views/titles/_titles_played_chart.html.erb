@@ -1,0 +1,23 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Tytuł');
+    data.addColumn('number', 'Liczba gier');
+    data.addRows(<%= raw titles_played_chart(@all_titles) %>);
+
+    var options = {
+      'title': 'Suma rozegranych partii',
+      'height': 400
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('titles-played-chart'));
+    chart.draw(data, options);
+  }
+</script>
+
+<div id="titles-played-chart"></div>

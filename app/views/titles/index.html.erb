@@ -1,4 +1,4 @@
-<div class="row container">
+<div class="row main-row container">
   <div class="col col-sm-12">
     <h1>Lista tytułów</h1>
 
@@ -33,6 +33,15 @@
         </div>
       </div>
     <% end %>
+  </div>
+</div>
+
+<div class="row main-row">
+  <div class="col col-sm-12 col-lg-6">
+    <%= render 'titles_favorites_chart' %>
+  </div>
+  <div class="col col-sm-12 col-lg-6">
+    <%= render 'titles_played_chart' %>
   </div>
 </div>
 

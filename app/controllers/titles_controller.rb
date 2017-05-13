@@ -1,7 +1,8 @@
 class TitlesController < ApplicationController
   def index
-    @titles = current_user.try(:admin?) ? Title.all : Title.accepted
-    @titles = @titles.order(:name).paginate(page: params[:page], per_page: 10)
+    @all_titles = current_user.try(:admin?) ? Title.all : Title.accepted
+    @all_titles = @all_titles.joins(:games, :favorites)
+    @titles = @all_titles.order(:name).paginate(page: params[:page], per_page: 10)
   end
 
   def new
