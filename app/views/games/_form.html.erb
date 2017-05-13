@@ -1,3 +1,5 @@
+<% @score_type = I18n::t("activerecord.attributes.title.score_type.#{@game.title.score_type}") %>
+
 <div class="row">
   <div class="col col-12">
     <%= render(partial: '/partials/errors', locals: { object: @game }) if @game.errors.any? %>
@@ -20,7 +22,7 @@
               Gracz
             </div>
             <div class="col col-3">
-              Punkty (Bramki)
+              <%= @score_type %>
             </div>
             <div class="col col-3">
               Rezultat

@@ -7,7 +7,7 @@
           <li>
             <%= game.title.name %>
              - <%= game.played_at.strftime('%d-%m-%Y') %>
-             - Punkty: <%= game.user_score %>
+             - <%= "#{I18n::t("activerecord.attributes.title.score_type.#{game.title.score_type}")}: #{game.user_score}" %>
              - <%= game.user_result %>
           </li>
         <% end %>
