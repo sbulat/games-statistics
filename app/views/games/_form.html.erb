@@ -33,6 +33,7 @@
           </div>
 
           <div id="player-rows" class="col-sm-12">
+            <%= render partial: 'player_row', locals: { player_name: current_user.display_name } %>
             <%= render partial: 'player_row' %>
           </div>
         </div>

@@ -1,20 +1,22 @@
+<% player_name ||= '' %>
+
 <div class="row player-row">
-  <div class="col col-3">
+  <div class="col col-sm-3">
     <div class="input-group">
-      <%= text_field_tag 'game[player][]', '', class: 'form-control player-field', placeholder: 'Gracz' %>
+      <%= text_field_tag 'game[player][]', player_name, class: 'form-control player-field', placeholder: 'Gracz' %>
     </div>
   </div>
-  <div class="col col-3">
+  <div class="col col-sm-3">
     <div class="input-group">
       <%= number_field_tag 'game[score][]', 0, class: 'form-control score-field', placeholder: @score_type, min: 0 %>
     </div>
   </div>
-  <div class="col col-3">
+  <div class="col col-sm-3">
     <div class="input-group">
       <%= select_tag 'game[result][]', results_select, class: 'form-control result-field', include_blank: true %>
     </div>
   </div>
-  <div class="col col-3">
+  <div class="col col-sm-3">
     <div class="input-group">
       <%= text_field_tag 'game[additional_info][]', '', class: 'form-control', placeholder: 'Dodatkowe info' %>
     </div>

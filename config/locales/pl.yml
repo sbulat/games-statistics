@@ -8,3 +8,16 @@ pl:
         score_type:
           goals: Bramki
           points: Punkty
+  devise:
+    registrations:
+      signed_up: "Witamy! Konto założone pomyślnie."
+    sessions:
+      signed_in: "Zalogowano."
+      signed_out: "Wylogowano."
+      already_signed_out: "Wylogowano."
+  errors:
+    messages:
+      already_confirmed: "już potwierdzono, proszę spróbować zalogować się ponownie."
+      not_saved:
+        one: "1 błąd powstrzymał ten %{resource} przed zapisem:"
+        other: "%{count} błędów powstrzymało ten %{resource} przed zapisem:"
