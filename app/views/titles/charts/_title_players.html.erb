@@ -1,0 +1,22 @@
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Gracz');
+    data.addColumn('number', 'Liczba gier');
+    data.addRows(<%= raw title_players_chart(@all_games) %>);
+
+    var options = {
+      'title': 'Uczestnicy gier',
+      'height': 400,
+      'pieSliceText': 'value'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('players-chart'));
+    chart.draw(data, options);
+  }
+</script>
+
+<div id="players-chart"></div>

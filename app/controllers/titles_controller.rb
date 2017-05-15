@@ -1,7 +1,6 @@
 class TitlesController < ApplicationController
   def index
     @all_titles = current_user.try(:admin?) ? Title.all : Title.accepted
-    @all_titles = @all_titles.joins(:games, :favorites)
     @titles = @all_titles.order(:name).paginate(page: params[:page], per_page: 10)
   end
 
@@ -26,10 +25,8 @@ class TitlesController < ApplicationController
 
   def show
     @title = Title.find(params[:id])
-    @games = current_user.games
-                         .where(title_id: @title.id)
-                         .order(:played_at)
-                         .paginate(page: params[:page], per_page: 10)
+    @all_games = current_user.games.where(title_id: @title.id)
+    @games = @all_games.order(played_at: :desc).paginate(page: params[:page], per_page: 10)
   end
 
   def edit

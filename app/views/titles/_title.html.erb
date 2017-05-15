@@ -3,7 +3,9 @@
     <%= link_to title.name, title_path(title.id) %>
   </div>
   <div class="col col-sm-5">
-    Ulubiony: <%= overall_favs(title.id) %> graczy | Rozegrano gier ogółem: <%= title.games.count %>
+    Ulubiony: <%= overall_favs(title.id) %> graczy |
+     Rozegrano gier ogółem: <%= title.games.count %> |
+     Rozegrałem gier: <%= title.user_played_games(current_user) %>
   </div>
   <div class="col col-sm-4">
     <% if current_user %>

@@ -1,3 +1,5 @@
+<% @score_type = "#{I18n::t("activerecord.attributes.title.score_type.#{@title.score_type}")}" %>
+
 <h1>Moje wyniki w <%= @title.name %></h1>
 
 <ul>
@@ -5,7 +7,7 @@
     <li>
       <%= link_to game.title.name, game_path(game.id) %>
        - <%= game.played_at.strftime('%d-%m-%Y') %>
-       - Punkty: <%= game.user_score %>
+       - <%= "#{@score_type}: #{game.user_score}" %>
        - <%= game.user_result %>
     </li>
   <% end %>
@@ -14,5 +16,20 @@
 <div class="row">
   <div class="col col-sm-12">
     <%= will_paginate @games %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-lg-6 col-sm-12">
+    <%= render 'titles/charts/title_wins' %>
+  </div>
+  <div class="col col-lg-6 col-sm-12">
+    <%= render 'titles/charts/title_players' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col col-sm-12">
+    <%= render 'titles/charts/title_score' %>
   </div>
 </div>

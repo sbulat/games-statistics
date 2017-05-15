@@ -1,0 +1,27 @@
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = new google.visualization.arrayToDataTable(<%= raw title_score_chart(@all_games) %>);
+    // data.addColumn('string', 'Gracz');
+    // data.addColumn('number', 'Liczba gier');
+    // data.addRows();
+
+    var options = {
+      'height': 400,
+      'hAxis': {
+        'title': 'Punkty/Bramki',
+        'minValue': 0
+      },
+      'vAxis': {
+        'title': 'Gracz'
+      }
+    };
+
+    var chart = new google.visualization.BarChart(document.getElementById('score-chart'));
+    chart.draw(data, options);
+  }
+</script>
+
+<div id="score-chart"></div>
