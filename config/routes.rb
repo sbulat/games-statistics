@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
 
   post '/title/:id/accept', to: 'titles#accept', as: 'accept_title'
   post '/title/:id/favorite', to: 'titles#favorite', as: 'favorite_title'

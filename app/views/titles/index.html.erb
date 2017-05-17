@@ -2,6 +2,16 @@
   <div class="col col-sm-12">
     <h1>Lista tytułów</h1>
 
+    <%= form_tag titles_path, class: 'row main-row', method: :get do %>
+      <div class="col col-sm-4">
+        <%= label_tag :q, 'Wyszukaj' %>
+        <%= text_field_tag :q, params[:q], placeholder: 'Wpisz frazę' %>
+      </div>
+      <div class="col col-sm-8">
+        <%= submit_tag 'Szukaj' %>
+      </div>
+    <% end %>
+
     <div class="row main-row">
       <div class="col col-sm-3">
         Nazwa

@@ -1,7 +1,9 @@
 class TitlesController < ApplicationController
   def index
     @all_titles = current_user.try(:admin?) ? Title.all : Title.accepted
-    @titles = @all_titles.order(:name).paginate(page: params[:page], per_page: 10)
+    @titles = @all_titles.order(:name)
+    @titles = @titles.where("LOWER(name) LIKE '%#{params[:q].downcase}%'") if params[:q]
+    @titles = @titles.paginate(page: params[:page], per_page: 10)
   end
 
   def new
