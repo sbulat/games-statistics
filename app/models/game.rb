@@ -49,6 +49,7 @@ class Game < ApplicationRecord
 
   def update_favs_counters
     fav = user.favorites.where(title_id: title_id).first
+    return unless fav
     fav.update_attributes(played_games: fav.played_games + 1)
   end
 end
