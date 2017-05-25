@@ -3,7 +3,7 @@ module HomeHelper
     res = []
 
     favorites.each do |fav|
-      res.push([fav.title.name, fav.title.user_played_games(current_user)])
+      res.push([fav.title.name, fav.played_games])
     end
 
     res

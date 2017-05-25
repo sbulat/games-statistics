@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   def index
     return unless current_user
     @games = current_user.games.order(played_at: :desc)
+    @games = @games.joins(:title).where('titles.name = ?', params[:q]) if params[:q]
     @games = @games.paginate(page: params[:page], per_page: 20)
   end
 

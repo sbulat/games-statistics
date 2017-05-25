@@ -58,3 +58,4 @@ gem 'cancancan'
 gem 'devise'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'will_paginate'
+gem 'roo', '~> 2.7.0', require: false
