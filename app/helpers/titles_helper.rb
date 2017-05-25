@@ -8,23 +8,11 @@ module TitlesHelper
   end
 
   def titles_favorites_chart(titles)
-    res = []
-
-    titles.each do |title|
-      res.push([title.name, title.favorites.count])
-    end
-
-    res
+    titles.inject([]) { |res, t| res.push([t.name, t.favorites.count]) }
   end
 
   def titles_played_chart(titles)
-    res = []
-
-    titles.each do |title|
-      res.push([title.name, title.games.count])
-    end
-
-    res
+    titles.inject([]) { |res, t| res.push([t.name, t.games.count]) }
   end
 
   def title_wins_chart(games)

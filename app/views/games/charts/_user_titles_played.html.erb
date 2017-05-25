@@ -1,0 +1,24 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Gracz');
+    data.addColumn('number', 'Liczba gier');
+    data.addRows(<%= raw user_titles_played_chart(@all_games) %>);
+
+    var options = {
+      'title': 'Rozegrane gry',
+      'height': 400,
+      'pieSliceText': 'value'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('titles-chart'));
+    chart.draw(data, options);
+  }
+</script>
+
+<div id="titles-chart"></div>
