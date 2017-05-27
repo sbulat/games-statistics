@@ -12,7 +12,7 @@
       <% if current_user.admin? %>
         <%= link_to icon_span('ok'), accept_title_path(title.id), title: 'Akceptuj', method: :post unless title.accepted? %>
         <%= link_to icon_span('pencil'), edit_title_path(title.id), title: 'Edytuj' %>
-        <%= link_to icon_span('remove'), edit_title_path(title.id), title: 'Usuń', confirm: 'Na pewno?', method: :delete %>
+        <%= link_to icon_span('remove'), title_path(title.id), title: 'Usuń', confirm: 'Na pewno?', method: :delete %>
       <% end %>
 
       <%= link_to icon_span('thumbs-up'), favorite_title_path(title.id), title: 'Dodaj do ulubionych', method: :post unless current_user.like?(title.id) %>

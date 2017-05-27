@@ -16,6 +16,6 @@ module GamesHelper
       h[game.user_result] += 1
     end
 
-    res.map { |k, v| [k, v] }
+    h.map { |k, v| [k, v] }
   end
 end

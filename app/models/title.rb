@@ -1,7 +1,7 @@
 class Title < ApplicationRecord
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
-  has_many :games
+  has_many :games, dependent: :destroy
 
   enum score_type: %i[goals points]
 
