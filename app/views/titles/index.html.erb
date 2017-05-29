@@ -46,6 +46,7 @@
   </div>
 </div>
 
+<% if @all_titles.present? %>
 <div class="row main-row">
   <div class="col col-sm-12 col-lg-6">
     <%= render 'titles/charts/titles_favorites' %>
@@ -54,5 +55,4 @@
     <%= render 'titles/charts/titles_played' %>
   </div>
 </div>
-
-
+<% end %>

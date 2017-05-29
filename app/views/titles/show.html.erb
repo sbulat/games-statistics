@@ -19,6 +19,7 @@
   </div>
 </div>
 
+<% if @all_games.present? %>
 <div class="row">
   <div class="col col-lg-6 col-sm-12">
     <%= render 'titles/charts/title_wins' %>
@@ -33,3 +34,4 @@
     <%= render 'titles/charts/title_score' %>
   </div>
 </div>
+<% end %>

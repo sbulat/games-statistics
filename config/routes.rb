@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :games, except: %i[edit update]
 
   root to: 'home#index'
+
+  match '*path' => redirect('/'), via: [:get]
 end

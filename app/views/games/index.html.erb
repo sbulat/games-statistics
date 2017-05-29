@@ -42,6 +42,7 @@
       </div>
     </div>
 
+    <% if @all_games.present? %>
     <div class="row main-row">
       <div class="col col-sm-6">
         <%= render 'games/charts/user_titles_played' %>
@@ -50,6 +51,7 @@
         <%= render 'games/charts/user_results' %>
       </div>
     </div>
+    <% end %>
 
   </div>
 </div>
